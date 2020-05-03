@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
-  <head>
-  <!-- ****** faviconit.com favicons ****** -->
+	<head>
+	<!-- ****** faviconit.com favicons ****** -->
 	<link rel="shortcut icon" href="/favicon.ico">
 	<link rel="icon" sizes="16x16 32x32 64x64" href="/favicon.ico">
 	<link rel="icon" type="image/png" sizes="196x196" href="/favicon-192.png">
@@ -23,10 +23,48 @@
 	<meta name="msapplication-TileImage" content="/favicon-144.png">
 	<meta name="msapplication-config" content="/browserconfig.xml">
 	<!-- ****** faviconit.com favicons ****** -->
-  <title>Ayudh Khajne - online</title>
-    <style></style>
-  </head>
-  <body>
-    <div>Hi!</div>
-  </body>
+	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+	<title>Ayudh Khajne - online</title>
+	<style>
+		
+		body {
+			background: #222;
+			font-family: 'Ubuntu', sans-serif;
+		}
+		
+		#navbar {
+			position: fixed;
+			top: 0;
+			left: 0;
+			overflow: hidden;
+			width: 100%;
+			background: #333;
+		}
+		
+		#navbar a {
+			float: right;
+			display: block;
+			color: white;
+			transition-duration: 0.4s;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+			font-size: 17px;
+		}
+		
+		#navbar a:hover {
+			background-color: #ddd;
+			color: black;
+		}
+		
+	</style>
+	</head>
+	<body>
+		<nav id="navbar">
+			<a class="nav-link" href="#home">Home</a>
+			<a class="nav-link" href="#contact">Contact</a>
+			<a class="nav-link" href="#about">About</a>
+		</nav>
+		<div>Hi!</div>
+	</body>
 </html>
