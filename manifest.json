@@ -1,13 +1,13 @@
 {
 	"dir" : "ltr",
-	"lang" : "tr",
+	"lang" : "English",
 	"name" : "Ayudh Khajne - online",
 	"scope" : "/",
-	"display" : "browser",
+	"display" : "fullscreen",
 	"start_url" : "https://ayudh-khajne.github.io/",
-	"short_name" : "Ayudh Khajne - ",
+	"short_name" : "Ayudh",
 	"theme_color" : "#FFFFFF",
-	"description" : "",
+	"description" : "An app for my website.",
 	"orientation" : "any",
 	"background_color" : "#FFFFFF",
 	"related_applications" : [],
@@ -96,6 +96,50 @@
 		{
 			"src": "https://ayudh-khajne.github.io/favicon-180.png",
 			"sizes": "180x180"
+		},
+		{
+			"src": "[Embedded]",
+			"sizes": "44x44"
+		},
+		{
+			"src": "[Embedded]",
+			"sizes": "48x48"
+		},
+		{
+			"src": "[Embedded]",
+			"sizes": "1240x600"
+		},
+		{
+			"src": "[Embedded]",
+			"sizes": "300x300"
+		},
+		{
+			"src": "[Embedded]",
+			"sizes": "88x88"
+		},
+		{
+			"src": "[Embedded]",
+			"sizes": "24x24"
+		},
+		{
+			"src": "[Embedded]",
+			"sizes": "50x50"
+		},
+		{
+			"src": "[Embedded]",
+			"sizes": "620x300"
+		},
+		{
+			"src": "[Embedded]",
+			"sizes": "192x192"
+		},
+		{
+			"src": "[Embedded]",
+			"sizes": "36x36"
+		},
+		{
+			"src": "[Embedded]",
+			"sizes": "1024x1024"
 		}],
 	"url" : "https://ayudh-khajne.github.io/",
 	"screenshots" : [],
