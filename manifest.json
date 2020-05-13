@@ -4,7 +4,7 @@
   "name": "Ayudh Khajne - online",
   "scope": "/",
   "display": "fullscreen",
-  "start_url": "https://ayudh-khajne.github.io/",
+  "start_url": "/assets/",
   "short_name": "Ayudh",
   "theme_color": "#FFFFFF",
   "description": "An app for my website.",
@@ -13,87 +13,87 @@
   "related_applications": [],
   "prefer_related_applications": false,
   "icons": [{
-      "src": "https://ayudh-khajne.github.io/favicon-144.png",
+      "src": "/assets/favicon-144.png",
       "sizes": "144x144"
     },
     {
-      "src": "https://ayudh-khajne.github.io/favicon.ico",
+      "src": "/assets/favicon.ico",
       "sizes": "64x64 32x32 16x16"
     },
     {
-      "src": "https://ayudh-khajne.github.io/favicon-70.png",
+      "src": "/assets/favicon-70.png",
       "sizes": "70x70"
     },
     {
-      "src": "https://ayudh-khajne.github.io/favicon-150.png",
+      "src": "/assets/favicon-150.png",
       "sizes": "150x150"
     },
     {
-      "src": "https://ayudh-khajne.github.io/favicon-310.png",
+      "src": "/assets/favicon-310.png",
       "sizes": "310x310"
     },
     {
-      "src": "https://ayudh-khajne.github.io/favicon.ico",
+      "src": "/assets/favicon.ico",
       "sizes": "16x16 32x32 64x64"
     },
     {
-      "src": "https://ayudh-khajne.github.io/favicon-192.png",
+      "src": "/assets/favicon-192.png",
       "sizes": "196x196"
     },
     {
-      "src": "https://ayudh-khajne.github.io/favicon-160.png",
+      "src": "/assets/favicon-160.png",
       "sizes": "160x160"
     },
     {
-      "src": "https://ayudh-khajne.github.io/favicon-96.png",
+      "src": "/assets/favicon-96.png",
       "sizes": "96x96"
     },
     {
-      "src": "https://ayudh-khajne.github.io/favicon-64.png",
+      "src": "/assets/favicon-64.png",
       "sizes": "64x64"
     },
     {
-      "src": "https://ayudh-khajne.github.io/favicon-32.png",
+      "src": "/assets/favicon-32.png",
       "sizes": "32x32"
     },
     {
-      "src": "https://ayudh-khajne.github.io/favicon-16.png",
+      "src": "/assets/favicon-16.png",
       "sizes": "16x16"
     },
     {
-      "src": "https://ayudh-khajne.github.io/favicon-57.png",
+      "src": "/assets/favicon-57.png",
       "sizes": "57x57"
     },
     {
-      "src": "https://ayudh-khajne.github.io/favicon-114.png",
+      "src": "/assets/favicon-114.png",
       "sizes": "114x114"
     },
     {
-      "src": "https://ayudh-khajne.github.io/favicon-72.png",
+      "src": "/assets/favicon-72.png",
       "sizes": "72x72"
     },
     {
-      "src": "https://ayudh-khajne.github.io/favicon-144.png",
+      "src": "/assets/favicon-144.png",
       "sizes": "144x144"
     },
     {
-      "src": "https://ayudh-khajne.github.io/favicon-60.png",
+      "src": "/assets/favicon-60.png",
       "sizes": "60x60"
     },
     {
-      "src": "https://ayudh-khajne.github.io/favicon-120.png",
+      "src": "/assets/favicon-120.png",
       "sizes": "120x120"
     },
     {
-      "src": "https://ayudh-khajne.github.io/favicon-76.png",
+      "src": "/assets/favicon-76.png",
       "sizes": "76x76"
     },
     {
-      "src": "https://ayudh-khajne.github.io/favicon-152.png",
+      "src": "/assets/favicon-152.png",
       "sizes": "152x152"
     },
     {
-      "src": "https://ayudh-khajne.github.io/favicon-180.png",
+      "src": "/assets/favicon-180.png",
       "sizes": "180x180"
     },
     {
@@ -141,7 +141,7 @@
       "sizes": "1024x1024"
     }
   ],
-  "url": "https://ayudh-khajne.github.io/",
+  "url": "/assets/",
   "screenshots": [],
   "generated": "true"
 }
