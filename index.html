@@ -28,9 +28,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/css/bootstrap-grid.css">
   <style>
     body,
-    html,
-    #home {
+    html {
       height: 100%;
+      margin: 0;
     }
 
     body {
@@ -88,13 +88,11 @@
     }
 
     #home {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-    }
-
-    #home table {
-      background: #222;
-      height: 100%;
-      width: 100%;
       color: whitesmoke;
     }
   </style>
@@ -129,15 +127,9 @@
     <a class="nav-link" href="#contact">Contact</a>
     <a class="nav-link" href="#about">About</a>
   </nav>
-  <div id="home">
-    <table>
-      <tr>
-        <td>
-          <h1>Hi! I am Ayudh.</h1>
-        </td>
-      </tr>
-    </table>
-  </div>
+  <section id="home">
+    <h1>Hi! I am Ayudh.</h1>
+  </section>
 </body>
 
 </html>
