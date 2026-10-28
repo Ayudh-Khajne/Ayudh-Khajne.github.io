@@ -115,6 +115,51 @@
     .nav-menu {
       display: flex;
       align-items: center;
+      margin-left: auto;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .theme-toggle {
+      background: transparent;
+      border: 1px solid #4a4a4a;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      margin: 0 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fbbf24;
+      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.15s ease;
+      line-height: 1;
+      -webkit-tap-highlight-color: transparent;
+      flex-shrink: 0;
+    }
+
+    .theme-toggle:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+      border-color: #666;
+      color: #fef08a;
+      transform: scale(1.05);
+    }
+
+    .theme-toggle:active {
+      transform: scale(0.95);
+    }
+
+    .theme-toggle .sun-icon {
+      display: block;
+    }
+
+    .theme-toggle .moon-icon {
+      display: none;
     }
 
     .nav-toggle {
@@ -362,6 +407,154 @@
       font-weight: 500;
     }
 
+    /* Transitions for smooth theme switching */
+    body,
+    #navbar,
+    #home,
+    #about,
+    #works,
+    #skills,
+    .experience-card,
+    .skills-card,
+    .nav-menu {
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Light Mode Theme */
+    html.light-mode body,
+    body.light-mode {
+      background-color: #f8fafc;
+      color: #1e293b;
+    }
+
+    body.light-mode h1,
+    body.light-mode h2,
+    body.light-mode .nav-brand-text,
+    body.light-mode .role-title {
+      color: #0f172a;
+    }
+
+    body.light-mode .nav-brand:hover {
+      opacity: 0.85;
+    }
+
+    body.light-mode #navbar {
+      background-color: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    body.light-mode .hamburger-bar {
+      background-color: #0f172a;
+    }
+
+    body.light-mode #navbar .nav-link {
+      color: #64748b;
+    }
+
+    body.light-mode #navbar .nav-link:hover {
+      background-color: #f1f5f9;
+      color: #0f172a;
+    }
+
+    body.light-mode #navbar .nav-link.active {
+      color: #0284c7;
+      background-color: rgba(2, 132, 199, 0.08);
+      border-bottom-color: #0284c7;
+      font-weight: 500;
+    }
+
+    body.light-mode #navbar .nav-link.active:hover {
+      background-color: rgba(2, 132, 199, 0.14);
+      color: #0284c7;
+    }
+
+    body.light-mode .theme-toggle {
+      border-color: #cbd5e1;
+      color: #475569;
+    }
+
+    body.light-mode .theme-toggle:hover {
+      background-color: #f1f5f9;
+      border-color: #94a3b8;
+      color: #0f172a;
+    }
+
+    body.light-mode .theme-toggle .sun-icon {
+      display: none;
+    }
+
+    body.light-mode .theme-toggle .moon-icon {
+      display: block;
+    }
+
+    body.light-mode #home {
+      color: #0f172a;
+    }
+
+    body.light-mode .tagline {
+      color: #475569;
+    }
+
+    body.light-mode .bio {
+      color: #64748b;
+    }
+
+    body.light-mode #about,
+    body.light-mode #skills {
+      background-color: #f1f5f9;
+      color: #1e293b;
+    }
+
+    body.light-mode #works {
+      background-color: #f8fafc;
+      color: #1e293b;
+    }
+
+    body.light-mode #about p {
+      color: #334155;
+    }
+
+    body.light-mode #about h2::after,
+    body.light-mode #works h2::after,
+    body.light-mode #skills h2::after {
+      background-color: #0284c7;
+    }
+
+    body.light-mode .experience-card,
+    body.light-mode .skills-card {
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #0284c7;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    body.light-mode .experience-header {
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    body.light-mode .company-name {
+      color: #0284c7;
+    }
+
+    body.light-mode .experience-location {
+      color: #64748b;
+    }
+
+    body.light-mode .experience-duration {
+      background-color: rgba(2, 132, 199, 0.1);
+      color: #0284c7;
+    }
+
+    body.light-mode .experience-list,
+    body.light-mode .skills-list {
+      color: #334155;
+    }
+
+    body.light-mode .skills-list strong {
+      color: #0f172a;
+    }
+
     @media (max-width: 768px) {
       #navbar {
         padding: 0 10px 0 14px;
@@ -524,6 +717,34 @@
       .skills-list li {
         margin-bottom: 14px;
       }
+
+      body.light-mode .nav-menu {
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      }
+
+      body.light-mode #navbar .nav-link {
+        border-bottom: 1px solid #f1f5f9;
+        color: #475569;
+      }
+
+      body.light-mode #navbar .nav-link:hover {
+        background-color: #f8fafc;
+        color: #0f172a;
+      }
+
+      body.light-mode #navbar .nav-link.active {
+        color: #0284c7;
+        background-color: rgba(2, 132, 199, 0.08);
+        border-left-color: #0284c7;
+        border-bottom-color: #f1f5f9;
+      }
+
+      body.light-mode #navbar .nav-link.active:hover {
+        background-color: rgba(2, 132, 199, 0.14);
+        color: #0284c7;
+      }
     }
 
     @media (max-width: 380px) {
@@ -568,6 +789,15 @@
   </script>
   <script type="module" src="https://cdn.jsdelivr.net/npm/@pwabuilder/pwainstall"></script>
   <pwa-install></pwa-install>
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('theme') === 'light') {
+          document.documentElement.classList.add('light-mode');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 
 <body>
@@ -576,17 +806,35 @@
       <img src="/assets/logo.png" alt="ayudhkhajne logo" class="nav-logo" width="32" height="32">
       <span class="nav-brand-text">ayudhkhajne</span>
     </a>
-    <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
-      <span class="hamburger-bar"></span>
-      <span class="hamburger-bar"></span>
-      <span class="hamburger-bar"></span>
-    </button>
     <div id="nav-menu" class="nav-menu">
       <a class="nav-link active" href="#home">Home</a>
       <a class="nav-link" href="#about">About</a>
       <a class="nav-link" href="#works">Works</a>
       <a class="nav-link" href="#skills">Skills</a>
       <a class="nav-link" href="#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+      <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
     </div>
   </nav>
   <section id="home">
@@ -746,6 +994,37 @@
             navToggle.classList.remove('open');
             navToggle.setAttribute('aria-expanded', 'false');
           }
+        });
+      }
+
+      // Theme toggle logic
+      const themeToggle = document.getElementById('theme-toggle');
+      if (themeToggle) {
+        function setTheme(isLight) {
+          if (isLight) {
+            document.documentElement.classList.add('light-mode');
+            document.body.classList.add('light-mode');
+            try { localStorage.setItem('theme', 'light'); } catch (e) {}
+            themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+            themeToggle.setAttribute('title', 'Switch to dark mode');
+          } else {
+            document.documentElement.classList.remove('light-mode');
+            document.body.classList.remove('light-mode');
+            try { localStorage.setItem('theme', 'dark'); } catch (e) {}
+            themeToggle.setAttribute('aria-label', 'Switch to light mode');
+            themeToggle.setAttribute('title', 'Switch to light mode');
+          }
+        }
+
+        // Sync initial state
+        try {
+          const isLight = localStorage.getItem('theme') === 'light';
+          setTheme(isLight);
+        } catch (e) {}
+
+        themeToggle.addEventListener('click', function () {
+          const isLight = document.body.classList.contains('light-mode') || document.documentElement.classList.contains('light-mode');
+          setTheme(!isLight);
         });
       }
     })();
