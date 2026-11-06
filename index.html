@@ -255,7 +255,8 @@
 
     #about,
     #works,
-    #skills {
+    #skills,
+    #contact {
       padding: 90px 20px 80px;
       display: flex;
       justify-content: center;
@@ -268,21 +269,24 @@
       color: whitesmoke;
     }
 
-    #works {
+    #works,
+    #contact {
       background: #222;
       color: whitesmoke;
     }
 
     .about-container,
     .works-container,
-    .skills-container {
+    .skills-container,
+    .contact-container {
       max-width: 820px;
       width: 100%;
     }
 
     #about h2,
     #works h2,
-    #skills h2 {
+    #skills h2,
+    #contact h2 {
       font-size: 2rem;
       margin-bottom: 24px;
       color: whitesmoke;
@@ -291,7 +295,8 @@
 
     #about h2::after,
     #works h2::after,
-    #skills h2::after {
+    #skills h2::after,
+    #contact h2::after {
       content: '';
       display: block;
       width: 50px;
@@ -407,6 +412,109 @@
       font-weight: 500;
     }
 
+    /* Contact Form Styles */
+    .contact-intro {
+      text-align: center;
+      color: #aaa;
+      font-size: 1.05rem;
+      margin-bottom: 30px;
+    }
+
+    .contact-card {
+      background-color: #2b2b2b;
+      padding: 36px 32px;
+      border-radius: 8px;
+      border: 1px solid #383838;
+      border-left: 4px solid #2196F3;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      max-width: 600px;
+      margin: 0 auto;
+      transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-align: left;
+    }
+
+    .form-group label {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: whitesmoke;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .form-group label .required {
+      color: #f43f5e;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 1rem;
+      color: whitesmoke;
+      background-color: #1f1f1f;
+      border: 1px solid #444;
+      border-radius: 6px;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      box-sizing: border-box;
+    }
+
+    .form-control::placeholder {
+      color: #777;
+    }
+
+    .form-control:focus {
+      border-color: #2196F3;
+      box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.25);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .contact-submit-btn {
+      align-self: flex-start;
+      padding: 12px 28px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #ffffff;
+      background-color: #2196F3;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+    }
+
+    .contact-submit-btn:hover {
+      background-color: #1976D2;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(33, 150, 243, 0.4);
+    }
+
+    .contact-submit-btn:active {
+      transform: translateY(0);
+    }
+
     /* Transitions for smooth theme switching */
     body,
     #navbar,
@@ -414,8 +522,10 @@
     #about,
     #works,
     #skills,
+    #contact,
     .experience-card,
     .skills-card,
+    .contact-card,
     .nav-menu {
       transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
@@ -432,6 +542,7 @@
     body.light-mode #about h2,
     body.light-mode #works h2,
     body.light-mode #skills h2,
+    body.light-mode #contact h2,
     body.light-mode .nav-brand-text,
     body.light-mode .role-title {
       color: #0f172a;
@@ -509,27 +620,60 @@
       color: #1e293b;
     }
 
-    body.light-mode #works {
+    body.light-mode #works,
+    body.light-mode #contact {
       background-color: #f8fafc;
       color: #1e293b;
     }
 
-    body.light-mode #about p {
+    body.light-mode #about p,
+    body.light-mode .contact-intro {
       color: #334155;
     }
 
     body.light-mode #about h2::after,
     body.light-mode #works h2::after,
-    body.light-mode #skills h2::after {
+    body.light-mode #skills h2::after,
+    body.light-mode #contact h2::after {
       background-color: #0284c7;
     }
 
     body.light-mode .experience-card,
-    body.light-mode .skills-card {
+    body.light-mode .skills-card,
+    body.light-mode .contact-card {
       background-color: #ffffff;
       border: 1px solid #e2e8f0;
       border-left: 4px solid #0284c7;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    body.light-mode .form-group label {
+      color: #0f172a;
+    }
+
+    body.light-mode .form-control {
+      color: #0f172a;
+      background-color: #ffffff;
+      border-color: #cbd5e1;
+    }
+
+    body.light-mode .form-control::placeholder {
+      color: #94a3b8;
+    }
+
+    body.light-mode .form-control:focus {
+      border-color: #0284c7;
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
+
+    body.light-mode .contact-submit-btn {
+      background-color: #0284c7;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+    }
+
+    body.light-mode .contact-submit-btn:hover {
+      background-color: #0369a1;
+      box-shadow: 0 6px 16px rgba(2, 132, 199, 0.35);
     }
 
     body.light-mode .experience-header {
@@ -663,13 +807,15 @@
 
       #about,
       #works,
-      #skills {
+      #skills,
+      #contact {
         padding: 70px 16px 50px;
       }
 
       #about h2,
       #works h2,
-      #skills h2 {
+      #skills h2,
+      #contact h2 {
         font-size: 1.6rem;
         margin-bottom: 18px;
       }
@@ -680,7 +826,8 @@
       }
 
       .experience-card,
-      .skills-card {
+      .skills-card,
+      .contact-card {
         padding: 18px 16px;
         margin-top: 16px;
       }
@@ -910,6 +1057,31 @@
           <li><strong>Tools &amp; Technical Proficiencies:</strong> Laboratory Instrumentation Calibration, Advanced
             Excel / Data Analysis, Technical Report Generation, System Diagnostics.</li>
         </ul>
+      </div>
+    </div>
+  </section>
+  <section id="contact">
+    <div class="contact-container">
+      <h2>Get In Touch</h2>
+      <p class="contact-intro">Have a project, query, or opportunity? Send me a message below.</p>
+      <div class="contact-card">
+        <form class="contact-form" onsubmit="event.preventDefault();">
+          <div class="form-group">
+            <label for="name">Name <span class="required" aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Your Full Name" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email <span class="required" aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="your.email@example.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="message">Message <span class="required" aria-hidden="true">*</span></label>
+            <textarea id="message" name="message" class="form-control" rows="5" placeholder="Write your message here..." required></textarea>
+          </div>
+          <button type="submit" class="contact-submit-btn">
+            Send Message
+          </button>
+        </form>
       </div>
     </div>
   </section>
