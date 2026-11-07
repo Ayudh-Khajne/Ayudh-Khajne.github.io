@@ -134,8 +134,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Collect data from your input IDs
     const formData = {
-      email: document.getElementById('email').value,
       name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
       message: document.getElementById('message').value
     };
 
