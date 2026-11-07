@@ -30,11 +30,11 @@ button {
 }
 
 .info {
-  background-color: #2196F3;
+  background-color: #ff3a1c;
 }
 
 .info:hover {
-  background: #0b7dda;
+  background: #e62e10;
 }
 
 #navbar {
@@ -181,9 +181,9 @@ button {
 }
 
 #navbar .nav-link.active {
-  color: #2196F3;
-  background-color: rgba(33, 150, 243, 0.12);
-  border-bottom-color: #2196F3;
+  color: #ff3a1c;
+  background-color: rgba(255, 58, 28, 0.12);
+  border-bottom-color: #ff3a1c;
   font-weight: 500;
 }
 
@@ -268,7 +268,7 @@ button {
   display: block;
   width: 50px;
   height: 3px;
-  background: #2196F3;
+  background: #ff3a1c;
   margin: 12px auto 0;
   border-radius: 2px;
 }
@@ -284,7 +284,7 @@ button {
 .experience-card {
   background: #2a2a2a;
   border: 1px solid #383838;
-  border-left: 4px solid #2196F3;
+  border-left: 4px solid #ff3a1c;
   border-radius: 6px;
   padding: 24px 28px;
   margin-top: 20px;
@@ -310,7 +310,7 @@ button {
 }
 
 .company-name {
-  color: #2196F3;
+  color: #ff3a1c;
 }
 
 .experience-location {
@@ -321,8 +321,8 @@ button {
 }
 
 .experience-duration {
-  background: rgba(33, 150, 243, 0.15);
-  color: #64b5f6;
+  background: rgba(255, 58, 28, 0.15);
+  color: #ff7a66;
   padding: 4px 12px;
   border-radius: 14px;
   font-size: 0.9rem;
@@ -350,7 +350,7 @@ button {
 .skills-card {
   background: #222;
   border: 1px solid #383838;
-  border-left: 4px solid #2196F3;
+  border-left: 4px solid #ff3a1c;
   border-radius: 6px;
   padding: 24px 28px;
   margin-top: 20px;
@@ -392,7 +392,7 @@ button {
   padding: 36px 32px;
   border-radius: 8px;
   border: 1px solid #383838;
-  border-left: 4px solid #2196F3;
+  border-left: 4px solid #ff3a1c;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   max-width: 600px;
   margin: 0 auto;
@@ -444,8 +444,8 @@ button {
 }
 
 .form-control:focus {
-  border-color: #2196F3;
-  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.25);
+  border-color: #ff3a1c;
+  box-shadow: 0 0 0 3px rgba(255, 58, 28, 0.25);
 }
 
 textarea.form-control {
@@ -460,7 +460,7 @@ textarea.form-control {
   font-size: 1rem;
   font-weight: 500;
   color: #ffffff;
-  background-color: #2196F3;
+  background-color: #ff3a1c;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -469,13 +469,13 @@ textarea.form-control {
   justify-content: center;
   gap: 8px;
   transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+  box-shadow: 0 4px 12px rgba(255, 58, 28, 0.3);
 }
 
 .contact-submit-btn:hover {
-  background-color: #1976D2;
+  background-color: #e62e10;
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(33, 150, 243, 0.4);
+  box-shadow: 0 6px 16px rgba(255, 58, 28, 0.4);
 }
 
 .contact-submit-btn:active {
@@ -551,7 +551,7 @@ textarea.form-control {
 }
 
 .social-icon-btn:focus-visible {
-  outline: 2px solid #2196F3;
+  outline: 2px solid #ff3a1c;
   outline-offset: 2px;
 }
 
@@ -621,15 +621,15 @@ body.light-mode #navbar .nav-link:hover {
 }
 
 body.light-mode #navbar .nav-link.active {
-  color: #0284c7;
-  background-color: rgba(2, 132, 199, 0.08);
-  border-bottom-color: #0284c7;
+  color: #ff3a1c;
+  background-color: rgba(255, 58, 28, 0.08);
+  border-bottom-color: #ff3a1c;
   font-weight: 500;
 }
 
 body.light-mode #navbar .nav-link.active:hover {
-  background-color: rgba(2, 132, 199, 0.14);
-  color: #0284c7;
+  background-color: rgba(255, 58, 28, 0.14);
+  color: #ff3a1c;
 }
 
 body.light-mode .theme-toggle {
@@ -684,7 +684,7 @@ body.light-mode #about h2::after,
 body.light-mode #works h2::after,
 body.light-mode #skills h2::after,
 body.light-mode #contact h2::after {
-  background-color: #0284c7;
+  background-color: #ff3a1c;
 }
 
 body.light-mode .experience-card,
@@ -692,7 +692,7 @@ body.light-mode .skills-card,
 body.light-mode .contact-card {
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
-  border-left: 4px solid #0284c7;
+  border-left: 4px solid #ff3a1c;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
@@ -711,18 +711,18 @@ body.light-mode .form-control::placeholder {
 }
 
 body.light-mode .form-control:focus {
-  border-color: #0284c7;
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+  border-color: #ff3a1c;
+  box-shadow: 0 0 0 3px rgba(255, 58, 28, 0.15);
 }
 
 body.light-mode .contact-submit-btn {
-  background-color: #0284c7;
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+  background-color: #ff3a1c;
+  box-shadow: 0 4px 12px rgba(255, 58, 28, 0.25);
 }
 
 body.light-mode .contact-submit-btn:hover {
-  background-color: #0369a1;
-  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.35);
+  background-color: #e62e10;
+  box-shadow: 0 6px 16px rgba(255, 58, 28, 0.35);
 }
 
 body.light-mode .experience-header {
@@ -730,7 +730,7 @@ body.light-mode .experience-header {
 }
 
 body.light-mode .company-name {
-  color: #0284c7;
+  color: #ff3a1c;
 }
 
 body.light-mode .experience-location {
@@ -738,8 +738,8 @@ body.light-mode .experience-location {
 }
 
 body.light-mode .experience-duration {
-  background-color: rgba(2, 132, 199, 0.1);
-  color: #0284c7;
+  background-color: rgba(255, 58, 28, 0.1);
+  color: #ff3a1c;
 }
 
 body.light-mode .experience-list,
@@ -846,15 +846,15 @@ body.light-mode .footer-copyright {
   }
 
   #navbar .nav-link.active {
-    color: #2196F3;
-    background-color: rgba(33, 150, 243, 0.15);
-    border-left-color: #2196F3;
+    color: #ff3a1c;
+    background-color: rgba(255, 58, 28, 0.15);
+    border-left-color: #ff3a1c;
     border-bottom-color: #383838;
   }
 
   #navbar .nav-link.active:hover {
-    background-color: rgba(33, 150, 243, 0.22);
-    color: #2196F3;
+    background-color: rgba(255, 58, 28, 0.22);
+    color: #ff3a1c;
   }
 
   #home {
@@ -957,15 +957,15 @@ body.light-mode .footer-copyright {
   }
 
   body.light-mode #navbar .nav-link.active {
-    color: #0284c7;
-    background-color: rgba(2, 132, 199, 0.08);
-    border-left-color: #0284c7;
+    color: #ff3a1c;
+    background-color: rgba(255, 58, 28, 0.08);
+    border-left-color: #ff3a1c;
     border-bottom-color: #f1f5f9;
   }
 
   body.light-mode #navbar .nav-link.active:hover {
-    background-color: rgba(2, 132, 199, 0.14);
-    color: #0284c7;
+    background-color: rgba(255, 58, 28, 0.14);
+    color: #ff3a1c;
   }
 
   .site-footer {
