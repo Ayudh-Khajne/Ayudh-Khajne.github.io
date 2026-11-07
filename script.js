@@ -91,13 +91,13 @@
       if (isLight) {
         document.documentElement.classList.add('light-mode');
         document.body.classList.add('light-mode');
-        try { localStorage.setItem('theme', 'light'); } catch (e) {}
+        try { localStorage.setItem('theme', 'light'); } catch (e) { }
         themeToggle.setAttribute('aria-label', 'Switch to dark mode');
         themeToggle.setAttribute('title', 'Switch to dark mode');
       } else {
         document.documentElement.classList.remove('light-mode');
         document.body.classList.remove('light-mode');
-        try { localStorage.setItem('theme', 'dark'); } catch (e) {}
+        try { localStorage.setItem('theme', 'dark'); } catch (e) { }
         themeToggle.setAttribute('aria-label', 'Switch to light mode');
         themeToggle.setAttribute('title', 'Switch to light mode');
       }
@@ -107,11 +107,59 @@
     try {
       const isLight = localStorage.getItem('theme') === 'light';
       setTheme(isLight);
-    } catch (e) {}
+    } catch (e) { }
 
     themeToggle.addEventListener('click', function () {
       const isLight = document.body.classList.contains('light-mode') || document.documentElement.classList.contains('light-mode');
       setTheme(!isLight);
     });
   }
-  })();
+})();
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Replace this with your actual Google Apps Script Web App URL
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbydVb463xNQsz3gpItwF53arOMXyWlspdpaxxLKfKk1bK-euv7pC8HbtmTB2Uy0YFVp/exec';
+
+  const form = document.querySelector('.contact-form');
+  if (!form) return; // Exit if the contact form isn't on the current page
+
+  const submitBtn = form.querySelector('.contact-submit-btn');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    // Disable the button and show loading state
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    // Collect data from your input IDs
+    const formData = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      message: document.getElementById('message').value
+    };
+
+    fetch(scriptURL, {
+      method: 'POST',
+      mode: 'no-cors', // Required for Google Apps Script to bypass CORS restrictions
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    })
+      .then(() => {
+        // Success feedback
+        alert('Thank you! Your message has been sent successfully.');
+        form.reset();
+      })
+      .catch(error => {
+        console.error('Error!', error.message);
+        alert('Oops! Something went wrong. Please try again later.');
+      })
+      .finally(() => {
+        // Re-enable the submit button
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      });
+  });
+});
