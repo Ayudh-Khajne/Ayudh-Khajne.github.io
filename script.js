@@ -87,19 +87,23 @@
   // Theme toggle logic
   const themeToggle = document.getElementById('theme-toggle');
   if (themeToggle) {
+    const themeSrText = themeToggle.querySelector('.sr-only');
+
     function setTheme(isLight) {
+      const labelText = isLight ? 'Switch to dark mode' : 'Switch to light mode';
       if (isLight) {
         document.documentElement.classList.add('light-mode');
         document.body.classList.add('light-mode');
         try { localStorage.setItem('theme', 'light'); } catch (e) { }
-        themeToggle.setAttribute('aria-label', 'Switch to dark mode');
-        themeToggle.setAttribute('title', 'Switch to dark mode');
       } else {
         document.documentElement.classList.remove('light-mode');
         document.body.classList.remove('light-mode');
         try { localStorage.setItem('theme', 'dark'); } catch (e) { }
-        themeToggle.setAttribute('aria-label', 'Switch to light mode');
-        themeToggle.setAttribute('title', 'Switch to light mode');
+      }
+      themeToggle.setAttribute('aria-label', labelText);
+      themeToggle.setAttribute('title', labelText);
+      if (themeSrText) {
+        themeSrText.textContent = labelText;
       }
     }
 
