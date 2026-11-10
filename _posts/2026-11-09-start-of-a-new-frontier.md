@@ -16,7 +16,7 @@ So I can suppose that my website is fully functional (just does not have a perso
 
 Let's talk about my website. It is currently hosted on GitHub and it is quite minimal. Here is a screenshot of the home page.
 
-![[2026-11-09-home-page-screenshot.png]]
+![](../assets/blog/2026-11-09-home-page-screenshot.png)
 
 It looks good. Doesn't it?
 
@@ -30,7 +30,7 @@ Here are the screenshots for all of the sections:
 
 Screenshots
 
-And the there is 'Blog' which is in a separate page. It is the newest addition.
+And then there is 'Blog' which is in a separate page. It is the newest addition.
 
 Blogimage
 

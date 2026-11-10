@@ -13,6 +13,7 @@
   const FILENAME_REGEX = /^(\d{4}-\d{2}-\d{2})-(.*)\.md$/;
 
   // Simple frontmatter parser
+  /*
   function parseFrontMatter(text) {
     if (!text.startsWith('---')) {
       return { meta: {}, content: text };
@@ -38,6 +39,60 @@
           val = val.replace(/^['"]|['"]$/g, '');
         }
         meta[key] = val;
+      }
+    });
+
+    return { meta, content };
+  }
+  */
+
+  // Simple frontmatter parser supporting Obsidian YAML lists
+  function parseFrontMatter(text) {
+    if (!text.startsWith('---')) {
+      return { meta: {}, content: text };
+    }
+    const endIdx = text.indexOf('\n---', 3);
+    if (endIdx === -1) {
+      return { meta: {}, content: text };
+    }
+    const rawYaml = text.substring(3, endIdx).trim();
+    const content = text.substring(endIdx + 4).trim();
+    const meta = {};
+
+    let currentKey = null;
+    rawYaml.split('\n').forEach(line => {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith('#')) return;
+
+      // Check if it's a list item belonging to the current key
+      if (trimmed.startsWith('-') && currentKey) {
+        if (!Array.isArray(meta[currentKey])) {
+          meta[currentKey] = [];
+        }
+        let val = trimmed.substring(1).trim().replace(/^['"]|['"]$/g, '');
+        if (val) meta[currentKey].push(val);
+        return;
+      }
+
+      const colonIdx = trimmed.indexOf(':');
+      if (colonIdx !== -1) {
+        const key = trimmed.substring(0, colonIdx).trim();
+        let val = trimmed.substring(colonIdx + 1).trim();
+        currentKey = key;
+
+        if (!val) {
+          // Empty value means a multi-line list follows
+          meta[key] = [];
+        } else if (val.startsWith('[') && val.endsWith(']')) {
+          meta[key] = val.substring(1, val.length - 1).split(',').map(s => s.trim().replace(/^['"]|['"]$/g, ''));
+        } else {
+          // Convert comma-separated strings or single values properly
+          if (key === 'tags' || key === 'categories') {
+            meta[key] = val.split(',').map(s => s.trim().replace(/^['"]|['"]$/g, ''));
+          } else {
+            meta[key] = val.replace(/^['"]|['"]$/g, '');
+          }
+        }
       }
     });
 
