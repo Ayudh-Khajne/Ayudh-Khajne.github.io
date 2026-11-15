@@ -2,9 +2,9 @@
   "dir": "ltr",
   "lang": "English",
   "name": "Ayudh Khajne - online",
-  "scope": "/",
+  "scope": "./",
   "display": "fullscreen",
-  "start_url": "/assets/",
+  "start_url": "./",
   "short_name": "Ayudh",
   "theme_color": "#FFFFFF",
   "description": "An app for my website.",
@@ -141,7 +141,7 @@
       "sizes": "1024x1024"
     }
   ],
-  "url": "/assets/",
+  "url": "./",
   "screenshots": [],
   "generated": "true"
 }
