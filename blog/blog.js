@@ -8,6 +8,7 @@
   const listView = document.getElementById('blog-list-view');
   const postView = document.getElementById('blog-post-view');
   const postsContainer = document.getElementById('posts-container');
+  const blogNavLink = document.querySelector('#navbar a[href="/blog/"]');
 
   // Regex to extract date and slug from standard Jekyll file naming: YYYY-MM-DD-slug.md
   const FILENAME_REGEX = /^(\d{4}-\d{2}-\d{2})-(.*)\.md$/;
@@ -188,6 +189,7 @@
     postView.style.display = 'none';
     listView.style.display = 'block';
     document.title = 'Blog - Ayudh Khajne';
+    if (blogNavLink) blogNavLink.classList.add('active');
 
     try {
       const res = await fetch('/_posts/posts.json');
@@ -305,6 +307,15 @@
 
   if (backToListLink) backToListLink.addEventListener('click', goBack);
   if (returnBlogBtn) returnBlogBtn.addEventListener('click', goBack);
+  if (blogNavLink) {
+    blogNavLink.addEventListener('click', (e) => {
+      if (postView.style.display !== 'none') {
+        e.preventDefault();
+        history.pushState({}, '', '/blog/');
+        loadBlogList();
+      }
+    });
+  }
 
   // Initial load
   handleRoute();

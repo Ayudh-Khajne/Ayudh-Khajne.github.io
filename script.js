@@ -3,6 +3,8 @@
   const navLinks = document.querySelectorAll('#navbar a.nav-link');
 
   function updateActiveNavLink() {
+    if (sections.length === 0) return;
+
     const scrollY = window.pageYOffset || document.documentElement.scrollTop;
     const navbar = document.getElementById('navbar');
     const navbarHeight = navbar ? navbar.offsetHeight : 50;
@@ -38,11 +40,13 @@
     });
   }
 
-  window.addEventListener('scroll', updateActiveNavLink, { passive: true });
-  window.addEventListener('resize', updateActiveNavLink);
-  window.addEventListener('load', updateActiveNavLink);
-  document.addEventListener('DOMContentLoaded', updateActiveNavLink);
-  updateActiveNavLink();
+  if (sections.length > 0) {
+    window.addEventListener('scroll', updateActiveNavLink, { passive: true });
+    window.addEventListener('resize', updateActiveNavLink);
+    window.addEventListener('load', updateActiveNavLink);
+    document.addEventListener('DOMContentLoaded', updateActiveNavLink);
+    updateActiveNavLink();
+  }
 
   // Mobile menu toggle logic
   const navToggle = document.getElementById('nav-toggle');
