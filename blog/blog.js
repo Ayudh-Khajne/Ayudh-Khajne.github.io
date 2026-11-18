@@ -9,6 +9,11 @@
   const postView = document.getElementById('blog-post-view');
   const postsContainer = document.getElementById('posts-container');
   const blogNavLink = document.querySelector('#navbar a[href="/blog/"]');
+  const searchInput = document.getElementById('blog-search-input');
+  const searchClearBtn = document.getElementById('search-clear-btn');
+  const searchStatus = document.getElementById('search-status');
+
+  let allPosts = null;
 
   // Regex to extract date and slug from standard Jekyll file naming: YYYY-MM-DD-slug.md
   const FILENAME_REGEX = /^(\d{4}-\d{2}-\d{2})-(.*)\.md$/;
@@ -184,6 +189,140 @@
     }
   }
 
+  // Render post cards into #posts-container
+  function renderPostCards(postsToRender, isFiltered, query = '') {
+    postsContainer.innerHTML = '';
+
+    if (postsToRender.length === 0) {
+      if (isFiltered) {
+        const safeQuery = query.replace(/[&<>"']/g, s => ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;'
+        }[s]));
+        postsContainer.innerHTML = `
+          <div class="blog-empty-search">
+            <p class="blog-empty">No articles found matching &ldquo;<strong>${safeQuery}</strong>&rdquo;.</p>
+            <button type="button" class="btn-clear-search" id="empty-clear-btn">Clear search</button>
+          </div>
+        `;
+        const emptyClearBtn = document.getElementById('empty-clear-btn');
+        if (emptyClearBtn) {
+          emptyClearBtn.addEventListener('click', () => {
+            if (searchInput) {
+              searchInput.value = '';
+              searchInput.focus();
+            }
+            filterAndRenderPosts();
+          });
+        }
+      } else {
+        postsContainer.innerHTML = '<p class="blog-empty">No articles published yet.</p>';
+      }
+      return;
+    }
+
+    postsToRender.forEach((post, index) => {
+      const isFirst = index === 0 && !isFiltered;
+      const card = document.createElement('article');
+      card.className = `blog-card ${isFirst ? 'featured-post' : ''}`;
+
+      const tagsHtml = post.tags.map(t => `<span class="blog-tag" title="Filter by #${t}">#${t}</span>`).join('');
+
+      card.innerHTML = `
+        <div class="blog-card-meta">
+          <time class="blog-date" datetime="${post.date}">
+            ${formatDate(post.date)}
+          </time>
+          ${isFirst ? '<span class="recent-tag">Latest Post</span>' : ''}
+        </div>
+        <h2 class="blog-card-title">
+          <a href="?post=${encodeURIComponent(post.filename)}" class="post-title-link" data-filename="${post.filename}">
+            ${post.title}
+          </a>
+        </h2>
+        <p class="blog-card-summary">${post.summary}</p>
+        ${post.tags.length ? `<div class="blog-tags">${tagsHtml}</div>` : ''}
+        <div class="blog-card-footer">
+          <a href="?post=${encodeURIComponent(post.filename)}" class="read-more-link" data-filename="${post.filename}">
+            Read Article &rarr;
+          </a>
+        </div>
+      `;
+
+      // Intercept clicks to avoid full reloads when navigating to a post
+      card.querySelectorAll('a[data-filename]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const fn = link.getAttribute('data-filename');
+          history.pushState({ post: fn }, '', `?post=${encodeURIComponent(fn)}`);
+          loadPost(fn);
+        });
+      });
+
+      // Filter by tag when clicking a tag pill
+      card.querySelectorAll('.blog-tag').forEach(tagEl => {
+        tagEl.style.cursor = 'pointer';
+        tagEl.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const rawTag = tagEl.textContent.replace(/^#/, '').trim();
+          if (searchInput) {
+            searchInput.value = rawTag;
+            searchInput.focus();
+            filterAndRenderPosts();
+          }
+        });
+      });
+
+      postsContainer.appendChild(card);
+    });
+  }
+
+  // Filter posts based on search input value
+  function filterAndRenderPosts() {
+    if (!allPosts) return;
+
+    const query = searchInput ? searchInput.value.trim() : '';
+
+    if (searchClearBtn) {
+      searchClearBtn.style.display = query ? 'flex' : 'none';
+    }
+
+    if (!query) {
+      if (searchStatus) searchStatus.textContent = '';
+      renderPostCards(allPosts, false);
+      return;
+    }
+
+    const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+    const filtered = allPosts.filter(post => {
+      const titleText = (post.title || '').toLowerCase();
+      const summaryText = (post.summary || '').toLowerCase();
+      const tagsText = (post.tags || []).join(' ').toLowerCase();
+      const catText = (post.categories || []).join(' ').toLowerCase();
+      const contentText = (post.content || '').toLowerCase();
+
+      return terms.every(term =>
+        titleText.includes(term) ||
+        summaryText.includes(term) ||
+        tagsText.includes(term) ||
+        catText.includes(term) ||
+        contentText.includes(term)
+      );
+    });
+
+    if (searchStatus) {
+      const count = filtered.length;
+      searchStatus.textContent = count === 1
+        ? '1 article found'
+        : `${count} articles found`;
+    }
+
+    renderPostCards(filtered, true, query);
+  }
+
   // Load the list of markdown posts from _posts/posts.json
   async function loadBlogList() {
     postView.style.display = 'none';
@@ -191,12 +330,20 @@
     document.title = 'Blog - Ayudh Khajne';
     if (blogNavLink) blogNavLink.classList.add('active');
 
+    // If already loaded in memory, render immediately with current search
+    if (allPosts !== null) {
+      filterAndRenderPosts();
+      return;
+    }
+
     try {
+      postsContainer.innerHTML = '<div id="loading-indicator" class="blog-loading">Loading articles...</div>';
+
       const res = await fetch('/_posts/posts.json');
       if (!res.ok) throw new Error('posts.json could not be loaded');
       const files = await res.json();
 
-      // Fetch frontmatter for each file in parallel
+      // Fetch frontmatter and content for each file in parallel
       const postPromises = files.map(async (filename) => {
         try {
           const fileRes = await fetch(`/_posts/${filename}`);
@@ -212,8 +359,9 @@
           const title = meta.title || fallbackTitle;
           const summary = meta.summary || content.slice(0, 160).replace(/[#*`_]/g, '') + '...';
           const tags = Array.isArray(meta.tags) ? meta.tags : [];
+          const categories = Array.isArray(meta.categories) ? meta.categories : [];
 
-          return { filename, title, date, summary, tags };
+          return { filename, title, date, summary, tags, categories, content };
         } catch (e) {
           return null;
         }
@@ -224,53 +372,8 @@
       // Sort posts strictly by date descending (most recent on top)
       posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-      postsContainer.innerHTML = '';
-
-      if (posts.length === 0) {
-        postsContainer.innerHTML = '<p class="blog-empty">No articles published yet.</p>';
-        return;
-      }
-
-      posts.forEach((post, index) => {
-        const isFirst = index === 0;
-        const card = document.createElement('article');
-        card.className = `blog-card ${isFirst ? 'featured-post' : ''}`;
-
-        const tagsHtml = post.tags.map(t => `<span class="blog-tag">#${t}</span>`).join('');
-
-        card.innerHTML = `
-          <div class="blog-card-meta">
-            <time class="blog-date" datetime="${post.date}">
-              ${formatDate(post.date)}
-            </time>
-            ${isFirst ? '<span class="recent-tag">Latest Post</span>' : ''}
-          </div>
-          <h2 class="blog-card-title">
-            <a href="?post=${encodeURIComponent(post.filename)}" class="post-title-link" data-filename="${post.filename}">
-              ${post.title}
-            </a>
-          </h2>
-          <p class="blog-card-summary">${post.summary}</p>
-          ${post.tags.length ? `<div class="blog-tags">${tagsHtml}</div>` : ''}
-          <div class="blog-card-footer">
-            <a href="?post=${encodeURIComponent(post.filename)}" class="read-more-link" data-filename="${post.filename}">
-              Read Article &rarr;
-            </a>
-          </div>
-        `;
-
-        // Intercept clicks to avoid full reloads when navigating to a post
-        card.querySelectorAll('a[data-filename]').forEach(link => {
-          link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const fn = link.getAttribute('data-filename');
-            history.pushState({ post: fn }, '', `?post=${encodeURIComponent(fn)}`);
-            loadPost(fn);
-          });
-        });
-
-        postsContainer.appendChild(card);
-      });
+      allPosts = posts;
+      filterAndRenderPosts();
 
     } catch (err) {
       postsContainer.innerHTML = `
@@ -281,13 +384,41 @@
     }
   }
 
-  // Handle URL route query parameter ?post=2026-11-08-welcome-to-my-blog.md
+  // Bind search input listeners
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      filterAndRenderPosts();
+    });
+
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        searchInput.value = '';
+        filterAndRenderPosts();
+      }
+    });
+  }
+
+  if (searchClearBtn) {
+    searchClearBtn.addEventListener('click', () => {
+      if (searchInput) {
+        searchInput.value = '';
+        searchInput.focus();
+      }
+      filterAndRenderPosts();
+    });
+  }
+
+  // Handle URL route query parameter ?post=... or ?search=...
   function handleRoute() {
     const params = new URLSearchParams(window.location.search);
     const postParam = params.get('post');
+    const searchParam = params.get('search');
     if (postParam) {
       loadPost(postParam);
     } else {
+      if (searchParam && searchInput) {
+        searchInput.value = searchParam;
+      }
       loadBlogList();
     }
   }
