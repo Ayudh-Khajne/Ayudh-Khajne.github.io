@@ -1613,7 +1613,7 @@ body.light-mode .single-post-article {
 
 body.light-mode .blog-card.featured-post {
   background: linear-gradient(180deg, rgba(124, 58, 237, 0.05) 0%, #ffffff 100%);
-  border-left: 4px solid #7c3aed;
+  border-left: 4px solid #9333ea;
 }
 
 body.light-mode .blog-card:hover {
@@ -1623,7 +1623,7 @@ body.light-mode .blog-card:hover {
 }
 
 body.light-mode .blog-card.featured-post:hover {
-  border-left-color: #7c3aed;
+  border-left-color: #9333ea;
 }
 
 body.light-mode .blog-card-title a {
