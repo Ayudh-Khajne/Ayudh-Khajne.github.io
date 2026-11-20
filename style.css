@@ -1220,12 +1220,17 @@ body.light-mode .footer-copyright {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   border-color: #4a4a4a;
+  border-left-color: #8b5cf6;
 }
 
 .blog-card.featured-post {
   border-left: 4px solid #a855f7;
   background: linear-gradient(180deg, rgba(139, 92, 246, 0.08) 0%, #2a2a2a 100%);
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+}
+
+.blog-card.featured-post:hover {
+  border-left-color: #a855f7;
 }
 
 .blog-card-meta {
@@ -1613,7 +1618,12 @@ body.light-mode .blog-card.featured-post {
 
 body.light-mode .blog-card:hover {
   border-color: #cbd5e1;
+  border-left-color: #7c3aed;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .blog-card.featured-post:hover {
+  border-left-color: #7c3aed;
 }
 
 body.light-mode .blog-card-title a {
